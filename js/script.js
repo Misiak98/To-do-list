@@ -21,7 +21,10 @@
         tasks.splice(taskIndex, 1);
         render();
     }
-
+    const toggleTaskDone = (taskIndex) => {
+        tasks[taskIndex].done = !tasks[taskIndex].done;
+        render();
+    }
 
 
     const render = () => {
@@ -29,7 +32,8 @@
 
         for (const task of tasks) {
             htmlString += `
-            <li>
+            <li ${task.done ? "style=\"text-decoration:line-through\"": ""}>
+            <button class = "js-done">zrobione?</button>
             <button class = "js-remove">usuń</button>
             ${task.content}
             </li>
@@ -44,31 +48,37 @@
                 removeTask(index);
             });
         });
-    };
+
+    const toggleDoneButtons = document.querySelectorAll(".js-done");
+    toggleDoneButtons.forEach((toggleDoneButton, index) => {
+        toggleDoneButton.addEventListener("click", () => {
+            toggleTaskDone(index);
+        });
+    });
+};
 
 
 
+const onFormSubmit = (event) => {
+    event.preventDefault();
 
-    const onFormSubmit = (event) => {
-        event.preventDefault();
+    const newTaskContent = document.querySelector(".js-newTask").value.trim();
 
-        const newTaskContent = document.querySelector(".js-newTask").value.trim();
+    if (newTaskContent === "") {
+        return;
+    }
 
-        if (newTaskContent === "") {
-            return;
-        }
-
-        addNewTask(newTaskContent);
-    };
+    addNewTask(newTaskContent);
+};
 
 
-    const init = () => {
-        render();
+const init = () => {
+    render();
 
-        const form = document.querySelector(".js-form");
+    const form = document.querySelector(".js-form");
 
-        form.addEventListener("submit", onFormSubmit);
-    };
+    form.addEventListener("submit", onFormSubmit);
+};
 
-    init();
+init();
 }
