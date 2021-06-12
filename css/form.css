@@ -1,0 +1,49 @@
+html {
+    box-sizing: border-box;
+}
+
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+.form{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap:20px;
+}
+
+@media(max-width:767px) {
+    .form {
+        grid-template-columns: 1fr;
+    }
+}
+    
+.form__input{
+    padding:10px;
+    border: 2px solid #ddd;
+}
+
+.form__button{
+    border:none;
+    color:#BCFFFF;
+    background-color: #007383;
+    padding:10px;
+}
+
+
+.form__button:hover {
+    background:hsl(180, 100%, 30%);
+}
+
+.form__button:active {
+    background:hsl(187, 100%, 35%);
+}
+
+.form__back{
+    border:2px solid hsl(0, 0%, 86%);
+    padding:20px;
+    margin-bottom: 0px;
+    border-bottom: none;
+    font-size:18px;
+    font-weight: 600;
+}
