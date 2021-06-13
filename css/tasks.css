@@ -3,9 +3,7 @@
     margin:0;
     padding:0;
 }
-.tasks__button{
-   
-}
+
 
 .tasks__button--toggleDone{
     background: rgb(44, 179, 44);
