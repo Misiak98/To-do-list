@@ -39,6 +39,7 @@
     grid-template-columns: auto 1fr auto;
     grid-gap:20px;
     margin:15px;
+    align-items: center;
 }
 
 .tasks__span--done{
@@ -47,5 +48,4 @@
 
 .tasks__span{
     text-align:left;
-    margin-top: 2px;   
 }
